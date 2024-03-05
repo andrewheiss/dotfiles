@@ -1,0 +1,24 @@
+# Upload Quarto and R Markdown websites using rsync
+Sys.setenv(UPLOAD_WEBSITES = "TRUE")
+
+# http://blog.jumpingrivers.com/posts/2017/speed_package_installation/
+options(Ncpus = 6)  # Use lots of cores
+
+# I'm not CRAN when running tests
+Sys.setenv(NOT_CRAN = "true")
+
+# Use homebrew Python for reticulate
+# Sys.setenv(RETICULATE_PYTHON = "/opt/homebrew/bin/python3")
+
+# Point to ghostscript
+# See https://www.andrewheiss.com/blog/2021/08/27/tikz-knitr-html-svg-fun/#connecting-dvisvgm-to-ghostscript-on-macos
+Sys.setenv(LIBGS = "/usr/local/share/ghostscript/9.53.3/lib/libgs.dylib.9.53")
+
+# ~/.Rprofile
+if (interactive()) {
+  rsthemes::set_theme_light("Textmate (default)")
+  rsthemes::set_theme_dark("Monokai")
+  rsthemes::set_theme_favorite(
+    c("Monokai")
+  )
+}
