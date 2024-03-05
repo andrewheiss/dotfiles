@@ -24,6 +24,8 @@
 # See man ls for an explanation of these color settings
 export LSCOLORS=exfxcxdxbxegedabagacad
 
+alias cm="chezmoi"
+
 # Use eza! https://eza.rocks/
 alias eza='eza --time-style=long-iso'
 alias ls='eza'
