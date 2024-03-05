@@ -1,0 +1,86 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#!/usr/bin/env zsh
+
+# -----------------------------
+# Andrew Heiss's zsh settings
+# -----------------------------
+#
+# Central location for zsh settings
+#
+# Adapted from https://github.com/cdelahousse/bashrc.d and 
+# https://scriptingosx.com/2019/06/moving-to-zsh/
+#
+# Include the following lines in ~/.zshenv first:
+# 
+# export COMPUTER_NAME="Fancy MacBook Pro"
+# ZDOTDIR=$HOME/.config/zsh
+#
+# Last updated 2024-03-05
+# ------------------------------
+
+# General zsh options
+setopt no_case_glob  # Case insensitive globbing
+setopt auto_cd       # Auto CD
+setopt correct       # Enable correction for commands
+setopt correct_all   # Enable correction for all arguments in commands
+
+# History stuff
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=5000
+HISTSIZE=2000
+
+setopt extended_history        # Record timestamp of command in HISTFILE
+setopt share_history           # Share command history data
+setopt hist_expire_dups_first  # Delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups        # Ignore duplicated commands history list
+setopt hist_ignore_space       # Ignore commands that start with space
+setopt hist_reduce_blanks      # Ignore commands that start with space
+setopt hist_verify             # Show command with history expansion to user before running it
+setopt inc_append_history      # Add commands to HISTFILE in order of execution
+
+
+# Prompt
+# (via https://scriptingosx.com/2019/07/moving-to-zsh-06-customizing-the-zsh-prompt/)
+# Replaced %1~ with %~ to show whole working directory path
+PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%~%f%b %# '
+
+# Paths for each computer
+if [[ $COMPUTER_NAME == "GSU laptop" ]]; then
+    source $ZDOTDIR/paths_gsu_laptop.zsh
+elif [[ $COMPUTER_NAME == "GSU desktop" ]]; then
+    source $ZDOTDIR/paths_gsu_desktop.zsh
+else
+    source $ZDOTDIR/paths_personal.zsh
+fi
+
+# Use VS Code for everything
+export EDITOR='code'
+export GIT_EDITOR='code -wl1'
+export TEXEDIT='code -w -l %d "%s"'
+export LESSEDIT='code -l %lm %f'
+alias edit="code -n"
+
+# Stop updating homebrew all the time
+export HOMEBREW_AUTO_UPDATE_SECS=86400
+
+# Other zsh settings
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/functions.zsh
+source $ZDOTDIR/completion.zsh
+
+# Don't use Powerlevel10k in RStudio
+# RStudio sets an environment variable `$RSTUDIO` to 1
+if [[ "$RSTUDIO" != "1" ]]; then
+    source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+
+    # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+    [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+    
+    # Change POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3 to 0
+fi
