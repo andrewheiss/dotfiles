@@ -1,0 +1,89 @@
+# Adapted from Luis Puerto's Makevars here:
+# https://gist.github.com/luispuerto/9b5fc37a117c94ebb07f1a1d93e6665e
+#
+# And Dirk Eddelbuettel's Makevars here:
+# http://dirk.eddelbuettel.com/blog/2017/11/27/#011_faster_package_installation_one
+# 
+# And this from Patrick Schratz: 
+# https://pat-s.me/transitioning-from-x86-to-arm64-on-macos-experiences-of-an-r-user/
+#
+# ------------------------------------------------------------------------------
+# MAKE SURE YOU SYMLINK THE M1 BLAS TO GET LIGHTNING FAST COMPUTATIONS!!!
+# https://www.mail-archive.com/r-sig-mac@r-project.org/msg06199.html
+# ------------------------------------------------------------------------------
+#
+
+# Homebrew bin / opt / lib locations
+HB=/opt/homebrew/bin
+HO=/opt/homebrew/opt
+HL=/opt/homebrew/lib
+HI=/opt/homebrew/include
+
+# ## Figure out the Homebrew path
+# BP=`brew --prefix`
+
+# HB=$(BP)/bin
+# HO=$(BP)/opt
+# HL=$(BP)/lib
+# HI=$(BP)/include
+
+# xcode headers
+XH=$(shell xcrun -show-sdk-path)
+
+# ccache
+CCACHE=$(HB)/ccache
+CCACHE=
+
+# Make using all cores (set # to # of cores on your machine)
+# Check https://stackoverflow.com/q/2499070 for more info. 
+# Run `sysctl -n hw.logicalcpu` to check the number of threads https://stackoverflow.com/a/56607839
+# As a rule of thumb the number should be between cores and threads. 
+MAKE=make -j4
+
+# Version
+VER=13
+
+# LLVM (Clang) compiler options
+CC=$(CCACHE) $(HO)/llvm/bin/clang
+CXX=$(CC)++
+CXX11=$(CC)++
+CXX14=$(CC)++
+CXX17=$(CC)++
+
+# Homebrew Fortran
+FC=$(CCACHE) $(HB)/gfortran
+F77=$(FC)
+#FLIBS=-L$(HL)/gcc/$(VER) -lgfortran -lquadmath -lm
+FLIBS=-L$(HL)/gcc/$(VER) -lgfortran -lm
+
+# STD libraries
+CXX1XSTD=-std=c++0x
+CXX11STD=-std=c++11
+CXX14STD=-std=c++14
+CXX17STD=-std=c++17
+
+# FLAGS
+STD_FLAGS=-I$(HI) -g -O3 -Wall -pedantic -mtune=native -pipe -Wno-unused-variable -Wno-unused-function -Wno-macro-redefined -Wno-unneeded-internal-declaration -Wno-unknown-pragmas -Wno-deprecated-declarations
+CFLAGS=$(STD_FLAGS)
+CXXFLAGS=$(STD_FLAGS)
+
+# Preprocessor FLAGS
+# NB: -isysroot refigures the include path to the Xcode SDK we set above
+CPPFLAGS=-isysroot $(XH) -I$(HI) \
+  -I$(HO)/llvm/include -I$(HO)/openssl/include \
+  -I$(HO)/gettext/include -I$(HO)/tcl-tk/include
+
+# Linker flags (suggested by homebrew)
+# LDFLAGS+=-L$(HO)/llvm/lib -Wl,-rpath,$(HO)/llvm/lib
+LDFLAGS+=-L$(HO)/llvm/lib/c++ -Wl,-rpath,$(HO)/llvm/lib/c++
+LDFLAGS+=-L$(HO)/jpeg/lib
+
+# Flags for OpenMP support that should allow packages that want to use
+# OpenMP to do so (data.table), and other packages that bork with
+# -fopenmp flag (stringi) to be left alone
+SHLIB_OPENMP_CFLAGS=-fopenmp
+SHLIB_OPENMP_CXXFLAGS=-fopenmp
+SHLIB_OPENMP_CXX11FLAGS=-fopenmp
+SHLIB_OPENMP_CXX14FLAGS=-fopenmp
+SHLIB_OPENMP_FCFLAGS=-fopenmp
+SHLIB_OPENMP_FFLAGS=-fopenmp
