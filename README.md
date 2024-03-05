@@ -28,3 +28,4 @@ See the available fields for a 1Password entry with:
 op item get $UUID --format json
 ```
 
+[1Password UUIDs aren't considered sensitive information](https://1password.community/discussion/comment/692527/#Comment_692527) and can be committed to git just fine.
