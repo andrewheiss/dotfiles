@@ -1,0 +1,12 @@
+{
+    "goToFileFunction": "Cmd+P",
+    "goToLine": "Alt+Cmd+G",
+    "activateTerminal": "Ctrl+Alt+`",
+    "commentUncomment": "Cmd+/",
+    "quickAddNext": "Cmd+D",
+    "moveLinesDown": "Ctrl+Cmd+Down",
+    "moveLinesUp": "Ctrl+Cmd+Up",
+    "reflowComment": "Alt+Cmd+Q",
+    "roxygenizePackage": "Ctrl+Shift+Cmd+D",
+    "reformatCode": "Shift+Cmd+A"
+}
