@@ -1,0 +1,19 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Andrew Heiss
+	email = andrew@andrewheiss.com
+	signingkey = 13826216917836AB
+[gpg]
+    program = /usr/local/bin/gpg
+[core]
+	excludesfile = /Users/andrew/.gitignore_global
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
