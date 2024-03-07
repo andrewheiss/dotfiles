@@ -19,8 +19,8 @@
 # https://stackoverflow.com/a/18077919/120898
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# path=('/usr/local/bin' '/usr/local/sbin' '/usr/local/opt/python/libexec/bin' $DROPBOX/bin $path)
-path=('/opt/homebrew/bin' '/usr/local/bin' '/usr/local/sbin' $DROPBOX/bin $path)
+# path=('/usr/local/bin' '/usr/local/sbin' '/usr/local/opt/python/libexec/bin' $HOME/bin $path)
+path=('/opt/homebrew/bin' '/usr/local/bin' '/usr/local/sbin' $HOME/bin $path)
 path+=('/Applications/Visual Studio Code.app/Contents/Resources/app/bin')
 export PATH
 
