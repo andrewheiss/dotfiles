@@ -22,6 +22,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # path=('/usr/local/bin' '/usr/local/sbin' '/usr/local/opt/python/libexec/bin' $HOME/bin $path)
 path=('/opt/homebrew/bin' '/usr/local/bin' '/usr/local/sbin' $HOME/bin $path)
 path+=('/Applications/Visual Studio Code.app/Contents/Resources/app/bin')
+path+=($HOME/.cargo/bin)
 export PATH
 
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
