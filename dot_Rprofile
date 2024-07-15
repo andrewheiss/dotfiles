@@ -15,7 +15,7 @@ Sys.setenv(NOT_CRAN = "true")
 Sys.setenv(LIBGS = "/usr/local/share/ghostscript/9.53.3/lib/libgs.dylib.9.53")
 
 # ~/.Rprofile
-if (interactive()) {
+if (interactive() & rstudioapi::hasFun("viewer")) {
   rsthemes::set_theme_light("Textmate (default)")
   rsthemes::set_theme_dark("Monokai")
   rsthemes::set_theme_favorite(
