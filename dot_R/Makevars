@@ -41,7 +41,7 @@ CCACHE=
 MAKE=make -j4
 
 # Version
-VER=13
+VER=14
 
 # LLVM (Clang) compiler options
 CC=$(CCACHE) $(HO)/llvm/bin/clang
