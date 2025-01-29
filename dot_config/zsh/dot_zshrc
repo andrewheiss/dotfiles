@@ -59,12 +59,12 @@ else
     source $ZDOTDIR/paths_personal.zsh
 fi
 
-# Use VS Code for everything
-export EDITOR='code'
-export GIT_EDITOR='code -wl1'
-export TEXEDIT='code -w -l %d "%s"'
-export LESSEDIT='code -l %lm %f'
-alias edit="code -n"
+# Use Positron for everything
+export EDITOR='positron'
+export GIT_EDITOR='positron -wl1'
+export TEXEDIT='positron -w -l %d "%s"'
+export LESSEDIT='positron -l %lm %f'
+alias edit="positron -n"
 
 # Stop updating homebrew all the time
 export HOMEBREW_AUTO_UPDATE_SECS=86400
