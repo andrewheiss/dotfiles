@@ -29,9 +29,7 @@
     "indent_guides": "gray",
     "insert_native_pipe_operator": true,
     "python_type": "system",
-    "python_version": "3.12.3",
+    "python_version": "3.13.1",
     "python_path": "/opt/homebrew/bin/python3",
-    "rmd_viewer_type": "pane",
-    "editor_theme": "Monokai",
-    "new_proj_use_renv": true
+    "rmd_viewer_type": "pane"
 }
