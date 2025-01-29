@@ -29,3 +29,9 @@ op item get $UUID --format json
 ```
 
 [1Password UUIDs aren't considered sensitive information](https://1password.community/discussion/comment/692527/#Comment_692527) and can be committed to git just fine.
+
+To apply the changes and rebuild the actual file (like `~/.Renviron`), run:
+
+``` sh
+chezmoi apply --verbose ~/.Renviron
+```
