@@ -84,3 +84,5 @@ if [[ "$RSTUDIO" != "1" ]]; then
     
     # Change POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3 to 0
 fi
+
+. "$HOME/.local/bin/env"

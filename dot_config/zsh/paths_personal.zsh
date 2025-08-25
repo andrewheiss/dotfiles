@@ -6,7 +6,7 @@
 #
 # Path settings for personal laptop
 #
-# Last updated 2024-03-05
+# Last updated 2025-08-24
 # ------------------------------
 
 # export PATH="/usr/local/opt/python/libexec/bin:/Users/andrew/bin:/Users/andrew/Library/Python/3.7/bin:$PATH"
@@ -23,6 +23,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 path=('/opt/homebrew/bin' '/usr/local/bin' '/usr/local/sbin' $HOME/bin $path)
 path+=('/Applications/Visual Studio Code.app/Contents/Resources/app/bin')
 path+=($HOME/.cargo/bin)
+path+=($HOME/.juliaup/bin)
 export PATH
 
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
@@ -30,6 +31,11 @@ export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 export LIBGS=/usr/local/share/ghostscript/9.53.3/lib/libgs.dylib.9.53
 
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Homebrew disables systemwide pip installations, so it's impossible to install
+# jupyter in the systemwide python. I made a venv at ~/.virtualenvs/quarto that
+# has jupyter installed in it, and QUARTO_PYTHON makes Quarto point to it
+export QUARTO_PYTHON=$HOME/.virtualenvs/quarto/bin/python3
 
 # Add homebrewed LLVM for clang, etc.
 # export PATH="/usr/local/opt/llvm/bin:$PATH"
