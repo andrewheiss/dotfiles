@@ -6,7 +6,7 @@
 #
 # Aliases
 #
-# Last updated 2024-03-05
+# Last updated 2025-10-22
 # -----------------------------
 
 # --------------------
@@ -86,4 +86,4 @@ alias monokai_r="pbpaste | pygmentize -f rtf -O style=monokai -l r | pbcopy"
 # Use radian instead of R (https://github.com/randy3k/radian)
 # alias r="radian"
 
-alias get_seed='curl "https://www.random.org/integers/?num=1&min=100000&max=999999&col=1&base=10&format=plain&rnd=new"'
+alias get_seed='curl "https://www.random.org/integers/?num=1&min=10000000&max=99999999&col=1&base=10&format=plain&rnd=new"'
