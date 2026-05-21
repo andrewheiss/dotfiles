@@ -1,3 +1,6 @@
+# For uv
+. "$HOME/.local/bin/env"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -84,5 +87,3 @@ if [[ "$RSTUDIO" != "1" ]]; then
     
     # Change POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3 to 0
 fi
-
-. "$HOME/.local/bin/env"
