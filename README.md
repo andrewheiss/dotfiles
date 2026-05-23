@@ -2,6 +2,36 @@
 
 These are all managed with [chezmoi](https://www.chezmoi.io/).
 
+## How to use in general
+
+It's generally best to make edits to dotfiles here and then run:
+
+``` sh
+chezmoi apply name_of_file
+```
+
+↑ That will copy the file from here to its proper on-disk location.
+
+I often forget, though, and make edits to the real file.
+
+Check the synchronization status of files here and there with:
+
+``` sh
+chezmoi status
+```
+
+See the actual diffs of what `chezmoi apply` would do with:
+
+``` sh
+chezmoi diff
+```
+
+To pull on-disk changes into chezmoi (like a reverse `chezmoi apply`), use `add`:
+
+``` sh
+chezmoi add name_of_file
+```
+
 
 ## Using 1Password credentials in templates
 
