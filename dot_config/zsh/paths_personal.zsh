@@ -6,7 +6,7 @@
 #
 # Path settings for personal laptop
 #
-# Last updated 2025-08-24
+# Last updated 2026-05-23
 # ------------------------------
 
 # export PATH="/usr/local/opt/python/libexec/bin:/Users/andrew/bin:/Users/andrew/Library/Python/3.7/bin:$PATH"
@@ -24,6 +24,7 @@ path=('/opt/homebrew/bin' '/usr/local/bin' '/usr/local/sbin' $HOME/bin $path)
 path+=('/Applications/Visual Studio Code.app/Contents/Resources/app/bin')
 path+=($HOME/.cargo/bin)
 path+=($HOME/.juliaup/bin)
+path+=($HOME/Library/TinyTeX/bin/universal-darwin)
 export PATH
 
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"

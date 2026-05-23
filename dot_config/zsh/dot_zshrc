@@ -21,10 +21,10 @@ fi
 #
 # Include the following lines in ~/.zshenv first:
 # 
-# export COMPUTER_NAME="Fancy MacBook Pro"
+# export COMPUTER_NAME="M5 MacBook Pro"
 # ZDOTDIR=$HOME/.config/zsh
 #
-# Last updated 2024-03-05
+# Last updated 2026-05-23
 # ------------------------------
 
 # General zsh options
